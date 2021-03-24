@@ -7,6 +7,8 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.vc19005768.weatherv2.fiveDayForecast.DailyForecasts;
+
 import java.util.List;
 
 

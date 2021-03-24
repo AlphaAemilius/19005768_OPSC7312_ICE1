@@ -1,4 +1,4 @@
-package com.vc19005768.weatherv2;
+package com.vc19005768.weatherv2.fiveDayForecast;
 
 import java.util.List;
 
@@ -8,11 +8,11 @@ public class DailyForecasts
 
     private int EpochDate;
 
-    private Temperature Temperature;
+    private com.vc19005768.weatherv2.fiveDayForecast.Temperature Temperature;
 
-    private Day Day;
+    private com.vc19005768.weatherv2.fiveDayForecast.Day Day;
 
-    private Night Night;
+    private com.vc19005768.weatherv2.fiveDayForecast.Night Night;
 
     private List<String> Sources;
 

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.vc19005768.weatherv2.CitySearchFragment;
 import com.vc19005768.weatherv2.CurrentWeatherFragment;
 import com.vc19005768.weatherv2.DailyForecastsFragment;
 import com.vc19005768.weatherv2.R;
@@ -21,23 +22,28 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @StringRes
     private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_3};
     private final Context mContext;
+    private final String locationName;
+    private final String locationKey;
 
-    public SectionsPagerAdapter(Context context, FragmentManager fm) {
+    public SectionsPagerAdapter(Context context, FragmentManager fm,
+                                String locationName, String locationKey) {
         super(fm);
         mContext = context;
+        this.locationName = locationName;
+        this.locationKey = locationKey;
     }
 
     @Override
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
-        // Return a PlaceholderFragment (defined as a static inner class below).
+
         switch (position){
             case 0:
-                return new CurrentWeatherFragment();
+                return CurrentWeatherFragment.newInstance(locationName, locationKey);
             case 1:
-                return new DailyForecastsFragment();
+                return DailyForecastsFragment.newInstance(1,locationKey);
             default:
-                return PlaceholderFragment.newInstance(position + 1);
+                return new CitySearchFragment();
         }
     }
 

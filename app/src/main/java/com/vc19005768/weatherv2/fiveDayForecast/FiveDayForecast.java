@@ -1,12 +1,15 @@
-package com.vc19005768.weatherv2;
+package com.vc19005768.weatherv2.fiveDayForecast;
+
+import com.vc19005768.weatherv2.fiveDayForecast.DailyForecasts;
+import com.vc19005768.weatherv2.fiveDayForecast.Headline;
 
 import java.util.List;
 
 public class FiveDayForecast
 {
-    private Headline Headline;
+    private com.vc19005768.weatherv2.fiveDayForecast.Headline Headline;
 
-    private List<DailyForecasts> DailyForecasts;
+    private List<com.vc19005768.weatherv2.fiveDayForecast.DailyForecasts> DailyForecasts;
 
     public void setHeadline(Headline Headline){
         this.Headline = Headline;

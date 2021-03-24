@@ -1,25 +1,20 @@
 package com.vc19005768.weatherv2;
 
 import android.content.Context;
-import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.gson.Gson;
+import com.vc19005768.weatherv2.fiveDayForecast.FiveDayForecast;
 import com.vc19005768.weatherv2.retrofit.IAccuWeather;
-
-import java.io.IOException;
-import java.net.URL;
+import com.vc19005768.weatherv2.retrofit.RetrofitClient;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -32,6 +27,10 @@ public class DailyForecastsFragment extends Fragment {
 
 
     private static final String ARG_COLUMN_COUNT = "column-count";
+    private static final String ARG_LOCATION_KEY = "locationKey";
+    private String locationKey;
+
+
     private int mColumnCount = 1;
     private RecyclerView weatherDataList;
 
@@ -52,9 +51,10 @@ public class DailyForecastsFragment extends Fragment {
     }
 
 
-    public static DailyForecastsFragment newInstance(int columnCount) {
+    public static DailyForecastsFragment newInstance(int columnCount, String lkey) {
         DailyForecastsFragment fragment = new DailyForecastsFragment();
         Bundle args = new Bundle();
+        args.putString(ARG_LOCATION_KEY, lkey);
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
         return fragment;
@@ -66,6 +66,7 @@ public class DailyForecastsFragment extends Fragment {
 
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
+            locationKey = getArguments().getString(ARG_LOCATION_KEY);
         }
     }
 
@@ -87,7 +88,7 @@ public class DailyForecastsFragment extends Fragment {
 
             // Make the call using Retrofit and RxJava
             compositeDisposable.add(weatherService.getFiveDayForecast
-                    ("305605",BuildConfig.ACCUWEATHER_API_KEY,true)
+                    (locationKey,BuildConfig.ACCUWEATHER_API_KEY,true)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Consumer<FiveDayForecast>()

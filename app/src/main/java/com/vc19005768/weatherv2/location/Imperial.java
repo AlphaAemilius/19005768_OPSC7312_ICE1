@@ -1,8 +1,8 @@
-package com.vc19005768.weatherv2;
+package com.vc19005768.weatherv2.location;
 
-public class Maximum
+public class Imperial
 {
-    private double Value;
+    private int Value;
 
     private String Unit;
 
@@ -11,7 +11,7 @@ public class Maximum
     public void setValue(int Value){
         this.Value = Value;
     }
-    public double getValue(){
+    public int getValue(){
         return this.Value;
     }
     public void setUnit(String Unit){
@@ -27,3 +27,4 @@ public class Maximum
         return this.UnitType;
     }
 }
+

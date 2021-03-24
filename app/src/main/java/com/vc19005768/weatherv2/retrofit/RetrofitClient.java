@@ -1,4 +1,4 @@
-package com.vc19005768.weatherv2;
+package com.vc19005768.weatherv2.retrofit;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;

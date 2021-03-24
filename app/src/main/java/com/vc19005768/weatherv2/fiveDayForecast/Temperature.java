@@ -1,10 +1,13 @@
-package com.vc19005768.weatherv2;
+package com.vc19005768.weatherv2.fiveDayForecast;
+
+import com.vc19005768.weatherv2.fiveDayForecast.Maximum;
+import com.vc19005768.weatherv2.fiveDayForecast.Minimum;
 
 public class Temperature
 {
-    private Minimum Minimum;
+    private com.vc19005768.weatherv2.fiveDayForecast.Minimum Minimum;
 
-    private Maximum Maximum;
+    private com.vc19005768.weatherv2.fiveDayForecast.Maximum Maximum;
 
     public void setMinimum(Minimum Minimum){
         this.Minimum = Minimum;
