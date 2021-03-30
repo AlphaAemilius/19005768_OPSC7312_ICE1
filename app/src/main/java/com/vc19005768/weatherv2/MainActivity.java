@@ -3,6 +3,7 @@ package com.vc19005768.weatherv2;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.location.Location;
 import android.os.Bundle;
 
@@ -11,6 +12,8 @@ import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.core.app.ActivityCompat;
@@ -19,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Looper;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.vc19005768.weatherv2.location.AccuWeatherLocation;
@@ -48,6 +52,18 @@ public class MainActivity extends AppCompatActivity {
 //        viewPager.setAdapter(sectionsPagerAdapter);
 //        TabLayout tabs = findViewById(R.id.tabs);
 //        tabs.setupWithViewPager(viewPager);
+        FloatingActionButton fab = findViewById(R.id.fab);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                View rootview = getWindow().getDecorView().getRootView();
+                Bitmap currentScreenshot =  ProcessImageUtil.takeScreenshot(rootview);  // calls take screenshot from ProcessImageUtil
+                ProcessImageUtil.storeScreenshot(MainActivity.this, currentScreenshot,"Weather Today");// stores screenshot (ProcessImageUtil)
+                ProcessImageUtil.pushToInstagram(MainActivity.this,"/Weather Today"); // opens the sharesheet
+            }
+        });
+
 
         compositeDisposable = new CompositeDisposable();
         Retrofit retrofit = RetrofitClient.getRetrofit();
@@ -157,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
         return locationCallback;
     }
 
-    private void displayData(AccuWeatherLocation location) {
+    private void displayData(AccuWeatherLocation location) { //location data injected into the pageadapter
         SectionsPagerAdapter sectionsPagerAdapter =  new SectionsPagerAdapter(
                  MainActivity.this,
                         getSupportFragmentManager(),

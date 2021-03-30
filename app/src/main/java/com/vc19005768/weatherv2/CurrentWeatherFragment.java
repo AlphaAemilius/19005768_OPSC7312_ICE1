@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.mancj.materialsearchbar.MaterialSearchBar;
 import com.vc19005768.weatherv2.currentForecast.CurrentWeather;
 import com.vc19005768.weatherv2.retrofit.IAccuWeather;
 import com.vc19005768.weatherv2.retrofit.RetrofitClient;
@@ -28,15 +29,16 @@ public class CurrentWeatherFragment extends Fragment {
     private static final String ARG_LOCATION_NAME = "locationName";
     private static final String ARG_LOCATION_KEY = "locationKey";
 
-
+    private IAccuWeather weatherService;
+    private CompositeDisposable compositeDisposable;
     private String locationName;
     private String locationKey;
 
     public TextView llblCurrent;
     public TextView llblTemp;
     private View view;
-    private IAccuWeather weatherService;
-    private CompositeDisposable compositeDisposable;
+
+
 
     public CurrentWeatherFragment() {
         compositeDisposable = new CompositeDisposable();
@@ -67,7 +69,7 @@ public class CurrentWeatherFragment extends Fragment {
         if (getArguments() != null) {
             locationName = getArguments().getString(ARG_LOCATION_NAME);
             locationKey = getArguments().getString(ARG_LOCATION_KEY);
-        }
+    }
     }
 
     @Override
@@ -102,7 +104,8 @@ public class CurrentWeatherFragment extends Fragment {
          llblTemp = view.findViewById(R.id.lblTemps);
 
         llblCurrent.setText("It is " + forecast.get(0).getWeatherText() + " at the moment in " + locationName + ".");
-        llblTemp.setText("With a temperature of "+ (int) forecast.get(0).getTemperature().getMetric().getValue() + " C");
+        llblTemp.setText("With a temperature of "+ (int) forecast.get(0).getTemperature().getMetric().getValue() + " °C");
 
     }
+
 }

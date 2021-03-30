@@ -33,10 +33,8 @@ public class DailyForecastsRecyclerViewAdapter extends RecyclerView.Adapter<Dail
         DailyForecasts item = mValues.get(position);
         vholder.mItem = item;
         vholder.ltvDate.setText(item.getDate().substring(0, 10));
-        vholder.ltvMinTemp.setText(item.getTemperature().getMinimum().getValue() +
-                " " + item.getTemperature().getMinimum().getUnit());
-        vholder.ltvMaxTemp.setText(item.getTemperature().getMaximum().getValue() +
-                " " + item.getTemperature().getMaximum().getUnit());
+        vholder.ltvMinTemp.setText(item.getTemperature().getMinimum().getValue() +" °C");
+        vholder.ltvMaxTemp.setText(item.getTemperature().getMaximum().getValue() +" °C");
 
     }
 

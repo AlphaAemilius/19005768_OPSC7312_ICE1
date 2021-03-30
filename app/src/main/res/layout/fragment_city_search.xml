@@ -1,14 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CitySearchFragment">
+    tools:context=".CitySearchFragment"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.mancj.materialsearchbar.MaterialSearchBar
+        android:id="@+id/sb_city_name"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        app:mt_hint="Enter City Name..."
+        app:mt_searchBarColor="@android:color/transparent"
+        app:mt_textColor="@android:color/black"
+        >
 
-</FrameLayout>
+
+    </com.mancj.materialsearchbar.MaterialSearchBar>
+
+    <TextView
+        android:id="@+id/lblSCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text=""
+        android:textColor="@color/blac"
+        android:textSize="30sp"
+        android:layout_marginBottom="30dp"
+        />
+
+    <TextView
+        android:id="@+id/lblSWeatherText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text=""
+        android:textColor="@color/blac"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/lblSCurrent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text=""
+        android:textColor="@color/blac"
+        android:textSize="18sp" />
+
+</LinearLayout>
