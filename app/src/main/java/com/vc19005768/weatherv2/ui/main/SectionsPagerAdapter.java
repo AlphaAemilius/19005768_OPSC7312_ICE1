@@ -39,9 +39,9 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         switch (position){
             case 0:
-                return CurrentWeatherFragment.newInstance(locationName, locationKey);
+                return CurrentWeatherFragment.newInstance(locationName, locationKey); //return placeholder fragment for location deny
             case 1:
-                return DailyForecastsFragment.newInstance(1,locationKey);
+                return DailyForecastsFragment.newInstance(1,locationKey); //return placeholder fragment for location deny
             default:
                 return new CitySearchFragment();
         }
